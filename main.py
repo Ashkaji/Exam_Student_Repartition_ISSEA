@@ -2,7 +2,6 @@ from docxtpl import DocxTemplate
 from csv import reader
 from utils import ExamClass
 
-# !!! formatage des dates !!!
 # ? possibilité d'envoyer un message à chaque étudiant sur
 # où il va composer ex de MiabeCampus
 # ajouter les probas aux différents groupes de classe
