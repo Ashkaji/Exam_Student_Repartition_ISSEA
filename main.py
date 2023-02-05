@@ -1,10 +1,8 @@
+from math import factorial
+
 from docxtpl import DocxTemplate
 from csv import reader
 from utils import ExamClass
-
-# ? possibilité d'envoyer un message à chaque étudiant sur
-# où il va composer ex de MiabeCampus
-# ajouter les probas aux différents groupes de classe
 
 from datetime import date
 
@@ -15,13 +13,13 @@ if x.month > 8:
 else:
     academic_year = f"{x.year - 1} - {x.year}"
 
-doc = DocxTemplate("repartition_template.docx")
+doc = DocxTemplate("templates/repartition_template.docx")
 
 context = dict(academic_year=academic_year, semestre='premier',
                date=x.strftime('%d/%m/%Y'),
                date_heure=f"{x.strftime('%d/%m/%Y')} 8h00 - 11h00")
 
-base = [tuple(i) for i in reader(open("base_issea.csv", encoding='utf8'))]
+base = [tuple(i) for i in reader(open("templates/base_issea.csv", encoding='utf8'))]
 base = base[1:]
 
 Amphi_1_G = ExamClass(code_name='Amphi_1_G', nrows=10, ncols=5)

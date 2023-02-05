@@ -103,18 +103,17 @@ class ExamClass:
         for v in topo_order:
             if db:
                 if not dfs['parents'][v]:
-                    self.graph['places'][v[0]][v[1]] = db.pop()[1]
+                    self.graph['places'][v[0]][v[1]] = db.pop()
                 else:
                     prev = [self.graph['places'][u[0]][u[1]][0] for u in dfs['parents'][v]]
                     x = 0
                     while db[-1][0] in prev and x < 5:
                         x += 1
                         shuffle(db)
-                    self.graph['places'][v[0]][v[1]] = db.pop()[1]
+                    self.graph['places'][v[0]][v[1]] = db.pop()
                     print(x)
 
     def print_names(self, context: dict[str, str]):
         for i in range(self.nrows):
             for j in range(self.ncols):
-                context[f"{self.code_name}_{i + 1}_{j + 1}"] = self.graph['places'][i][j]
-
+                context[f"{self.code_name}_{i + 1}_{j + 1}"] = self.graph['places'][i][j][1]
